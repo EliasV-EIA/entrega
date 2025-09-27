@@ -1,13 +1,28 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import javax.swing.*;
+HashMap<String,Usuario> usuarios = new HashMap<String,Usuario>();
 void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+    AdministradorContenido obj_admin1 = new AdministradorContenido("oasfof-w2-9wqb-9fqw","Juan","du90--h-","test","dec","activa",
+            false, false, false, true, true, false);
+    System.out.println(obj_admin1.getPermisosDeEdicion());
+    Duena Cabra = new Duena("baaa","Cabrita Sakura", "o0qwocjw393aopw303r", "Presidente", "01/01/25","Activa","AAAAAAAAAAAAAAAAAA","01/01/25");
+    usuarios.put("Cabrita Sakura",Cabra);
+}
+void electorBase(){
+    String inp;
+    JOptionPane.showMessageDialog(null, "Bienvenido, eliga una accion");
+    inp=JOptionPane.showInputDialog(null, "Escriba la opcion deseada: login , registrar, salir");
+    switch (inp.toLowerCase()) {
+        case "login":
+        login();
+        break;
+    }
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+}
+void login(){
+    String username;
+    username=JOptionPane.showInputDialog(null, "Nombre");
+    if (usuarios.containsKey(username))
+    {
+
     }
 }
