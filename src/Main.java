@@ -1,9 +1,7 @@
 import javax.swing.*;
 HashMap<String,Usuario> usuarios = new HashMap<String,Usuario>();
 void main() {
-//    AdministradorContenido obj_admin1 = new AdministradorContenido("oasfof-w2-9wqb-9fqw","Juan","du90--h-","test","dec","activa",
-//            false, false, false, true, true, false);
-//    System.out.println(obj_admin1.getPermisosDeEdicion());
+
     Duena Cabra = new Duena("baaa","Cabrita Sakura", "jhadfvasdeofjhojh", "Presidente", "01/01/25","Activa","AAAAAAAAAAAAAAAAAA","01/01/25");
     usuarios.put("Cabrita Sakura",Cabra);
     electorBase();
@@ -22,7 +20,7 @@ void electorBase(){
             break;
         }
         case 1: {
-
+            registar();
             electorBase();
             break;
         }
@@ -63,7 +61,7 @@ void login(){
 }
 void accionUsuario(Usuario u){
     if (u.getClass()==Duena.class){
-        System.out.println("THIS IS STUPID");
+        System.out.println("Menu cabra");
 
     }
     else if (u.getClass()==AdministradorContenido.class){
@@ -78,6 +76,39 @@ void accionUsuario(Usuario u){
 }
 
 void registar(){
+    Object[] opciones = {"Cliente", "AdminUsuario", "AdminContenido"};
+    int tipo;
+    String id;
+    String nombre;
+    String pass;
+    String fecha;
+    String estado;
+    String rol;
+    tipo=JOptionPane.showOptionDialog(null, "Seleccione tipo de cuenta", "Registrar", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null, opciones, opciones[0]);
+    nombre=JOptionPane.showInputDialog(null,"Nombre");
+    id=JOptionPane.showInputDialog(null,"ID");
+    pass=JOptionPane.showInputDialog(null,"Contrasena");
+    fecha=JOptionPane.showInputDialog(null,"Fecha de registro(automatica en el futuro)");
+    estado=JOptionPane.showInputDialog(null,"Estado");
+    rol=JOptionPane.showInputDialog(null,"Rol");
+    if (tipo==0){
+        System.out.println("Creacion cliente");
 
-//    if ()
+    }
+    else if (tipo==1){
+        int nivel = Integer.parseInt(JOptionPane.showInputDialog(null, "Nivel de acceso"));
+        usuarios.put(nombre, new AdministradorUsuario(id,nombre,pass,rol,fecha,estado,nivel));
+
+    }
+    else if (tipo==2) {
+        usuarios.put(nombre, new AdministradorContenido(id,nombre,pass,rol,fecha,estado,
+                Boolean.parseBoolean(Integer.toString(JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar nombres?","Permisos",JOptionPane.YES_NO_OPTION))),
+                Boolean.parseBoolean(Integer.toString(JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar categorias?","Permisos",JOptionPane.YES_NO_OPTION))),
+                Boolean.parseBoolean(Integer.toString(JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar descripciones?","Permisos",JOptionPane.YES_NO_OPTION))),
+                Boolean.parseBoolean(Integer.toString(JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar precios?","Permisos",JOptionPane.YES_NO_OPTION))),
+                Boolean.parseBoolean(Integer.toString(JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar stocks?","Permisos",JOptionPane.YES_NO_OPTION))),
+                Boolean.parseBoolean(Integer.toString(JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar fechas de lanzamiento?","Permisos",JOptionPane.YES_NO_OPTION)))));
+
+    }
+
 }
