@@ -4,44 +4,53 @@ void main() {
 //    AdministradorContenido obj_admin1 = new AdministradorContenido("oasfof-w2-9wqb-9fqw","Juan","du90--h-","test","dec","activa",
 //            false, false, false, true, true, false);
 //    System.out.println(obj_admin1.getPermisosDeEdicion());
-    Duena Cabra = new Duena("baaa","Cabrita Sakura", "o0qwocjw393aopw303r", "Presidente", "01/01/25","Activa","AAAAAAAAAAAAAAAAAA","01/01/25");
+    Duena Cabra = new Duena("baaa","Cabrita Sakura", "Balls", "Presidente", "01/01/25","Activa","AAAAAAAAAAAAAAAAAA","01/01/25");
     usuarios.put("Cabrita Sakura",Cabra);
     electorBase();
 }
 void electorBase(){
-    String inp;
+    Object[] opciones= {"Login", "Registrar", "Salir"};
+    int inp;
     JOptionPane.showMessageDialog(null, "Bienvenido, eliga una accion");
-    inp=JOptionPane.showInputDialog(null, "Escriba la opcion deseada: login , registrar, salir");
-    switch (inp.toLowerCase()) {
-        case "login": {
+    inp= JOptionPane.showOptionDialog(null, "Seleccione su accion deseada", "Principal", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null, opciones, opciones[2]);
+//    inp=JOptionPane.showInputDialog(null, "Escriba la opcion deseada: login , registrar, salir");
+
+    switch (inp) {
+        case 0: {
             login();
             electorBase();
             break;
         }
-        case "registrar": {
+        case 1: {
             electorBase();
             break;
         }
-        case "salir": {
+        case 2: {
             break;
         }
-        default:{
-            JOptionPane.showMessageDialog(null,"Eleccion imposible, intente de nuevo");
-            electorBase();
-            break;
-        }
+
+
+
     }
 
 }
 void login(){
     String username;
+    String password;
     int retry;
     username=JOptionPane.showInputDialog(null, "Nombre");
     if (usuarios.containsKey(username))
     {
-        if (JOptionPane.showInputDialog(null, "Contrasena")==usuarios.get(username).getPasswordHash()){
+        System.out.println(usuarios.get(username).getPasswordHash());
+        password=JOptionPane.showInputDialog(null, "Contrasena");
 
+        if (password.compareTo(usuarios.get(username).getPasswordHash())==0){
+
+            System.out.println("CORRECTo");
+            accionUsuario(usuarios.get(username));
         }
+        else
+            JOptionPane.showMessageDialog(null, "Contrasena incorrecta");
     }
     else {
         retry = JOptionPane.showConfirmDialog(null, "Ese usuario no existe, quiere intentar de nuevo?");
@@ -51,4 +60,10 @@ void login(){
 
     }
 }
-void accionUsuario(){}
+void accionUsuario(Usuario u){
+    if (u.getClass()==Duena.class);
+    {
+        System.out.println("THIS IS STUPID");
+    }
+
+}
