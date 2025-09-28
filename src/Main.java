@@ -4,7 +4,7 @@ void main() {
 //    AdministradorContenido obj_admin1 = new AdministradorContenido("oasfof-w2-9wqb-9fqw","Juan","du90--h-","test","dec","activa",
 //            false, false, false, true, true, false);
 //    System.out.println(obj_admin1.getPermisosDeEdicion());
-    Duena Cabra = new Duena("baaa","Cabrita Sakura", "Balls", "Presidente", "01/01/25","Activa","AAAAAAAAAAAAAAAAAA","01/01/25");
+    Duena Cabra = new Duena("baaa","Cabrita Sakura", "jhadfvasdeofjhojh", "Presidente", "01/01/25","Activa","AAAAAAAAAAAAAAAAAA","01/01/25");
     usuarios.put("Cabrita Sakura",Cabra);
     electorBase();
 }
@@ -22,6 +22,7 @@ void electorBase(){
             break;
         }
         case 1: {
+
             electorBase();
             break;
         }
@@ -61,9 +62,22 @@ void login(){
     }
 }
 void accionUsuario(Usuario u){
-    if (u.getClass()==Duena.class);
-    {
+    if (u.getClass()==Duena.class){
         System.out.println("THIS IS STUPID");
-    }
 
+    }
+    else if (u.getClass()==AdministradorContenido.class){
+        System.out.println("(menu admincontenido");
+    }
+    else if (u.getClass()==AdministradorUsuario.class) {
+        System.out.println("AdminUsuario");
+    }
+    else
+        throw new RuntimeException("Tipo de usuario no encontrado");
+
+}
+
+void registar(){
+
+//    if ()
 }
