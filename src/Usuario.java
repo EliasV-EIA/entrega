@@ -15,6 +15,14 @@ public abstract class Usuario {
         this.estadoCuenta = estadoCuenta;
     }
 
+    public String getEstadoCuenta() {
+        return estadoCuenta;
+    }
+
+    public void setEstadoCuenta(String estadoCuenta) {
+        this.estadoCuenta = estadoCuenta;
+    }
+
     public String detalleUsuario(){
         return "ID: "+this.id+"\nNombre: "+this.nombre+"\nRol: "+rol+"\nFecha de Registro: "+this.fechaRegistro+"\nEstado de Cuenta: "+this.estadoCuenta;
     }
