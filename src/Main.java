@@ -4,7 +4,10 @@ void main() {
 
     Duena Cabra = new Duena("baaa","Cabrita Sakura", "jhadfvasdeofjhojh", "Presidente", "01/01/25","Activa","AAAAAAAAAAAAAAAAAA","01/01/25");
     usuarios.put("Cabrita Sakura",Cabra);
-    electorBase();
+//    AdministradorContenido obj_test = new AdministradorContenido("413","John","noplacelikehome","test","4/13/09","activo",true,true,false,false,true,true);
+//    electorBase();
+//    System.out.println(obj_test.getPermisosDeEdicion());
+    testmenu();
 }
 void electorBase(){
     Object[] opciones= {"Login", "Registrar", "Salir"};
@@ -27,6 +30,7 @@ void electorBase(){
         case 2: {
             break;
         }
+
 
 
 
@@ -101,14 +105,47 @@ void registar(){
 
     }
     else if (tipo==2) {
-        usuarios.put(nombre, new AdministradorContenido(id,nombre,pass,rol,fecha,estado,
-                Boolean.parseBoolean(Integer.toString(JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar nombres?","Permisos",JOptionPane.YES_NO_OPTION))),
-                Boolean.parseBoolean(Integer.toString(JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar categorias?","Permisos",JOptionPane.YES_NO_OPTION))),
-                Boolean.parseBoolean(Integer.toString(JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar descripciones?","Permisos",JOptionPane.YES_NO_OPTION))),
-                Boolean.parseBoolean(Integer.toString(JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar precios?","Permisos",JOptionPane.YES_NO_OPTION))),
-                Boolean.parseBoolean(Integer.toString(JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar stocks?","Permisos",JOptionPane.YES_NO_OPTION))),
-                Boolean.parseBoolean(Integer.toString(JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar fechas de lanzamiento?","Permisos",JOptionPane.YES_NO_OPTION)))));
-
+        AdministradorContenido obj_cont = new AdministradorContenido(id,nombre,pass,rol,fecha,estado,
+                JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar nombres?","Permisos",JOptionPane.YES_NO_OPTION)==1,
+                JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar categorias?","Permisos",JOptionPane.YES_NO_OPTION)==1,
+                JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar descripciones?","Permisos",JOptionPane.YES_NO_OPTION)==1,
+                JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar precios?","Permisos",JOptionPane.YES_NO_OPTION)==1,
+                JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar stocks?","Permisos",JOptionPane.YES_NO_OPTION)==1,
+                JOptionPane.showConfirmDialog(null, "Tiene este usuario permiso para editar fechas de lanzamiento?","Permisos",JOptionPane.YES_NO_OPTION)==1);
+        usuarios.put(nombre, obj_cont);
+        System.out.println(obj_cont.getPermisosDeEdicion());
+        System.out.println(((AdministradorContenido)usuarios.get(nombre)).getPermisosDeEdicion());
+        System.out.println(usuarios.get(nombre).detalleUsuario());
+        System.out.println(usuarios.get(nombre).getClass());
     }
 
+}
+void testmenu(){
+    String inp= JOptionPane.showInputDialog(null, "comando");
+    switch (inp)
+    {
+        case "normal":
+        {
+            electorBase();
+            testmenu();
+            break;
+        }
+        case "listusers":
+        {
+            System.out.println(usuarios);
+            testmenu();
+            break;
+        }
+        case "exit":
+        {
+            break;
+        }
+        case "geteditperms":{
+            inp=JOptionPane.showInputDialog(null,"");
+        }
+        default:{
+            testmenu();
+            break;
+        }
+    }
 }
