@@ -4,9 +4,7 @@ void main() {
 
     Duena Cabra = new Duena("baaa","Cabrita Sakura", "jhadfvasdeofjhojh", "Presidente", "01/01/25","Activa","AAAAAAAAAAAAAAAAAA","01/01/25");
     usuarios.put("Cabrita Sakura",Cabra);
-//    AdministradorContenido obj_test = new AdministradorContenido("413","John","noplacelikehome","test","4/13/09","activo",true,true,false,false,true,true);
 //    electorBase();
-//    System.out.println(obj_test.getPermisosDeEdicion());
     testmenu();
 }
 void electorBase(){
@@ -64,14 +62,14 @@ void login(){
     }
 }
 void accionUsuario(Usuario u){
-    if (u.getClass()==Duena.class){
+    if (u instanceof Duena){
         System.out.println("Menu cabra");
 
     }
-    else if (u.getClass()==AdministradorContenido.class){
+    else if (u instanceof AdministradorContenido){
         System.out.println("(menu admincontenido");
     }
-    else if (u.getClass()==AdministradorUsuario.class) {
+    else if (u instanceof AdministradorUsuario) {
         System.out.println("AdminUsuario");
     }
     else
