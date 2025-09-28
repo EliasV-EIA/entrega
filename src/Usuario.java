@@ -18,4 +18,8 @@ public abstract class Usuario {
     public String detalleUsuario(){
         return "ID: "+this.id+"\nNombre: "+this.nombre+"\nRol: "+rol+"\nFecha de Registro: "+this.fechaRegistro+"\nEstado de Cuenta: "+this.estadoCuenta;
     }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
 }
